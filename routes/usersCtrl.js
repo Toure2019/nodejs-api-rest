@@ -61,7 +61,7 @@ module.exports = {
                 var newUser = models.User.create({
                     email: email,
                     username: username,
-                    password: password,
+                    password: bcryptedPassword,
                     bio: bio,
                     isAdmin: 0
                 })
@@ -83,7 +83,7 @@ module.exports = {
             }
         });
     },
-     
+
     login: function(req, res) {
         // PARAMS
         var email = req.body.email;
@@ -117,7 +117,7 @@ module.exports = {
                 if (resBcrypt) {
                     done(userFound);
                 } else {
-                    res.status(403).json({ 'error': 'invalid password' });
+                    res.status(403).json({ 'error': 'invalid password ?' });
                 }
             }
         ], function(userFound) {
@@ -131,6 +131,7 @@ module.exports = {
             }
         });
     },
+
     getUserProfile: function(req, res) {
         // Get auth hearder
         var headerAuth = req.headers['authorization'];
