@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {});
+  
   Like.associate = function(models) {
     // associations can be defined here
 
@@ -31,12 +32,12 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'userId'
     });
 
-    models.Like.belongsToMany(models.User, {
+    models.Like.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'user'
     });
 
-    models.Like.belongsToMany(models.Message, {
+    models.Like.belongsTo(models.Message, {
       foreignKey: 'messageId',
       as: 'message'
     });
