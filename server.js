@@ -18,8 +18,7 @@ server.get('/', function(req, res) {
 
 server.use('/api/', apiRouter);
 
+// Launch server
 server.listen(8080, function(){
     console.log('Serveur en écoute sur le port 8080');
-})
-
-// Launch server
+});
